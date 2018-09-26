@@ -1,0 +1,22 @@
+{
+  "name": "next-anime-list",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-boost": "^0.1.16",
+    "dotenv": "^6.0.0",
+    "graphql": "^14.0.2",
+    "next": "^7.0.0",
+    "node-fetch": "^2.2.0",
+    "react": "^16.5.2",
+    "react-apollo": "^2.1.11",
+    "react-dom": "^16.5.2",
+    "styled-components": "^3.4.9"
+  },
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  }
+}
