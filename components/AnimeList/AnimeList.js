@@ -23,24 +23,35 @@ const AnimeList = ({ query }) => {
             image={anime.coverImage.large}
             key={`anime-card-${i}-${anime.title.romaji}`}
             data={{
-              'Romaji Title': anime.title.romaji,
+              Studio: {
+                value: (
+                  <TagList>
+                    {anime.studios.nodes.map(({ name }, studioI) => (
+                      <Tag key={`anime-${i}-studio-${studioI}`}>{name}</Tag>
+                    ))}
+                  </TagList>
+                ),
+                show: anime.studios.nodes.length > 0
+              },
+              tags: {
+                value: (
+                  <TagList>
+                    {anime.tags.map(({ name }, tagI) => (
+                      <Tag key={`anime-${i}-tag-${tagI}`}>{name}</Tag>
+                    ))}
+                  </TagList>
+                ),
+                show: anime.tags.length > 0
+              },
               Episodes: { value: anime.episodes },
+              'Romaji Title': { value: anime.title.romaji },
+
               Description: {
                 value: (
                   <div
                     dangerouslySetInnerHTML={{ __html: anime.description }}
                   />
                 )
-              },
-              tags: {
-                value: (
-                  <TagList>
-                    {anime.tags.map(({ name }, tagi) => (
-                      <Tag key={`anime-${i}-tag${tagi}`}>{name}</Tag>
-                    ))}
-                  </TagList>
-                ),
-                show: anime.tags.length > 0
               }
             }}
           />

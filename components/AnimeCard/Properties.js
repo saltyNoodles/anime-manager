@@ -4,23 +4,24 @@ import { Property } from './Property';
 
 const Properties = ({ data }) => (
   <PropertyList>
-    {Object.entries(data).map((kvpair, i) => {
-      const [name] = kvpair;
-
+    {Object.keys(data).map((name, i) => {
       const value = data[name].value;
       const defaultValue = data[name].defaultValue || null;
+
       let show;
       if (data[name].show === false) {
         show = data[name].show;
       } else {
         show = true;
       }
+
       return (
         <Property
           key={`anime-property-${i}`}
           name={name}
           value={value}
           show={show}
+          defaultValue={defaultValue}
         />
       );
     })}

@@ -6,14 +6,12 @@ import { PropertyValue } from './PropertyValue';
 const Property = ({ name, value, defaultValue, show = true }) => {
   if (!show || (!value && !defaultValue)) {
     return <div />;
-  } else if (name == 'tags') {
-    console.log('value:', value, !!value);
-    console.log('defaultValue:', defaultValue, !!defaultValue);
-    console.log('show:', show, !!show);
   }
+
   return (
     <PropertyStyle>
-      <PropertyKey>{name}:</PropertyKey> <PropertyValue>{value}</PropertyValue>
+      <PropertyKey>{name}:</PropertyKey>{' '}
+      <PropertyValue>{value || defaultValue}</PropertyValue>
     </PropertyStyle>
   );
 };
