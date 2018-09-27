@@ -8,9 +8,9 @@ const Navbar = ({ items = [] }) => {
       <Nav role="navigation" className="nav-list">
         {items.map((item, i) => (
           <NavItem key={`nav-item-${i}`}>
-            <NavLink href={item.href}>
+            <Link href={item.href}>
               <A href={item.href}>{item.text}</A>
-            </NavLink>
+            </Link>
           </NavItem>
         ))}
       </Nav>

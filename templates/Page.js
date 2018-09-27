@@ -16,7 +16,7 @@ injectGlobal`
   @import url('https://fonts.googleapis.com/css?family=Roboto');
 
   body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Helvetica', sans-serif;
     padding: 0px;
     margin: 0px;
   }
