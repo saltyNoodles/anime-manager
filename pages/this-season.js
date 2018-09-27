@@ -7,22 +7,29 @@ import { Page, Content } from 'templates';
 import { AnimeList } from 'components';
 
 import defaultFields from 'config/default-graphql-fields';
-export default () => {
+
+const ThisSeason = props => {
   return (
     <Page>
       <Content>
-        <AnimeList
-          query={gql`
-            {
-              Page {
-                media(season: FALL, seasonYear: 2018) {
-                  ${defaultFields}
-                }
-              }
-            }
-          `}
-        />
+        <AnimeList query={props.query} />
       </Content>
     </Page>
   );
 };
+
+ThisSeason.getInitialProps = () => {
+  const query = gql`
+    {
+      Page {
+        media(season: FALL, seasonYear: 2018) {
+          ${defaultFields}
+        }
+      }
+    }
+  `;
+
+  return { query };
+};
+
+export default ThisSeason;

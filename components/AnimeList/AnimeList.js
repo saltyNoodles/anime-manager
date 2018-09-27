@@ -14,7 +14,7 @@ const AnimeList = ({ query }) => {
           return <p>Loading...</p>;
         }
         if (error) {
-          return <p>Error :(</p>;
+          return <p>Error loading data.</p>;
         }
 
         const animeList = data.Page.media.map((anime, i) => (
