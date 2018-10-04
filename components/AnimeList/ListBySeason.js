@@ -5,10 +5,11 @@ import styled from 'styled-components';
 
 import { Page, Content } from 'templates';
 import { Card, AnimeCard } from 'components';
+import { queryBySeason } from 'queries';
 
-const AnimeList = ({ query }) => {
+const ListBySeason = ({ year, season }) => {
   return (
-    <Query query={query}>
+    <Query query={queryBySeason({ year, season })}>
       {({ loading, error, data }) => {
         if (loading) {
           return <p>Loading...</p>;
@@ -63,11 +64,9 @@ const AnimeList = ({ query }) => {
   );
 };
 
-export { AnimeList };
-
 const CardList = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
   grid-gap: 20px;
 `;
 
@@ -92,3 +91,5 @@ const Tag = styled.li`
 const AdultTag = styled(Tag)`
   background: #dd2234;
 `;
+
+export { ListBySeason };

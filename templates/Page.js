@@ -1,15 +1,21 @@
-const { Component } = React;
-
 import { injectGlobal } from 'styled-components';
-
-// Apollo Stuff
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from 'react-apollo';
-import { createHttpLink } from 'apollo-link-http';
-import fetch from 'node-fetch';
 
 import { Navbar } from 'components';
 import navbarItems from 'config/nav-routes';
+
+import withApolloClient from 'lib/apollo/with-apollo-client';
+import { ApolloProvider } from 'react-apollo';
+
+const Page = withApolloClient(({ children, apolloClient }) => (
+  <ApolloProvider client={apolloClient}>
+    <div>
+      <Navbar items={navbarItems} />
+      {children}
+    </div>
+  </ApolloProvider>
+));
+
+export { Page };
 
 // Global Styles
 injectGlobal`
@@ -21,23 +27,3 @@ injectGlobal`
     margin: 0px;
   }
 `;
-
-const client = new ApolloClient({
-  uri: `https://graphql.anilist.co`,
-  fetch
-});
-
-export class Page extends Component {
-  render() {
-    return (
-      <div>
-        <ApolloProvider client={client}>
-          <div>
-            <Navbar items={navbarItems} />
-            {this.props.children}
-          </div>
-        </ApolloProvider>
-      </div>
-    );
-  }
-}

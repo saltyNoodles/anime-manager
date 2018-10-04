@@ -1,1 +1,1 @@
-export * from './AnimeList';
+export * from './ListBySeason';
